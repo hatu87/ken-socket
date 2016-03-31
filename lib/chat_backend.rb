@@ -16,6 +16,9 @@ class ChatBackend
 
       ws.on :message do |event|
         p [:message, event.data]
+        rawData = JSON.parse(event.data)
+        Message.create!(content: rawData["content"], user_id: rawData["user"]["id"])
+        # Message.create(event
         @clients.each {|client| client.send(event.data) }
       end
 

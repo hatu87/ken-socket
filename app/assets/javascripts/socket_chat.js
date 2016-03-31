@@ -15,7 +15,11 @@ function setupForm() {
     var content = $("#message_content").val();
     var user    = window.currentUser;
     // let's use JSON to convert an object into string
-    ws.send(JSON.stringify({ content: content, user: user }));
+    ws.send(JSON.stringify({
+      type: 'add',
+      content: content,
+      user: user
+    }));
     // clear the input text:
     $("#message_content").val('')
   });

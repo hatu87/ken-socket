@@ -13,6 +13,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    message = Message.delete(params[:id])
+    # binding.pry
+
+  end
+
   private
   def message_params
     params.require(:message).permit(:content, :user_id)

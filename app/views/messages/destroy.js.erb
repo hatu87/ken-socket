@@ -1,0 +1,2 @@
+$(".messages").empty();
+$(".messages").html('<%= escape_javascript(render partial: "message" , locals: {@messages} %>');
