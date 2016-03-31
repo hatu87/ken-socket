@@ -1,9 +1,14 @@
 <h1>Home#index</h1>
 <br/>
   <h2>Messages</h2>
+  <script>
+  window.currentUser = <%= current_user.to_json.html_safe %>;
+  </script>
 
-<%= render @messages %>
-<%= form_for Message.new do |f| %>
-  <%= f.text_field :content, placeholder: 'Enter your message' %> <br/>
+<div class="messages">
+  <%= render @messages %>
+</div>
+<%= form_for Message.new, id: "new_message" do |f| %>
+  <%= f.text_field :content, id: "message_content", placeholder: "Enter your message" %> <br/>
   <%= f.submit %>
 <% end %>
