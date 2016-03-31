@@ -1,7 +1,8 @@
 // file: app/assets/javascript/socket_chat.js
 // please type it yourself, do NOT copy & paste
 
-window.ws = new WebSocket("ws://" + window.document.location.host)
+var ws_protocol = window.location.protocol === 'http:' ? 'ws:' : 'wss:'
+window.ws = new WebSocket(ws_protocol + '//' + window.document.location.host)
 
 ws.onmessage = function(rawMessage) {
   var message = JSON.parse(rawMessage.data);
